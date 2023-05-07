@@ -1,5 +1,8 @@
-resource "null_resource" "hello" {
+resource "null_resource" "python_function" {
   provisioner "local-exec" {
-    command = "echo 'def say_hello():\n    print(\"hello\")' > hello.py"
+    command = <<-EOT
+      echo print('Hello ${var.name}') > ${var.file_name}
+    EOT
   }
 }
+
